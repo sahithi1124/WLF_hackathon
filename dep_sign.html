@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Department News Hub</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e2e7ee;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .signup-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+        h2 {
+            color: #003366;
+            text-align: center;
+        }
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        .button {
+            width: 100%;
+            padding: 10px;
+            background-color: #003366;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #002244;;
+        }
+        .login-link {
+            display: block;
+            text-align: center;
+            color: #B0B0B0;
+            margin-top: 10px;
+        }
+        .login-link a {
+            color: #2a2a2a;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-container">
+        <h2>Sign Up for Department News Hub</h2>
+        <input type="text" id="name" class="input-field" placeholder="Full Name" required>
+        <input type="email" id="email" class="input-field" placeholder="Email" required>
+        <input type="text" id="username" class="input-field" placeholder="Username" required>
+        <input type="password" id="password" class="input-field" placeholder="Password" required>
+        <button class="button signup-btn" id="signupBtn">Sign Up</button>
+        <div class="login-link">
+            Already have an account? <a href="dep_logon.html" id="loginBtn">Login</a>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle signup
+        document.getElementById('signupBtn').addEventListener('click', function() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (name && email && username && password) {
+                // Store new user details in localStorage
+                localStorage.setItem('name', name);
+                localStorage.setItem('email', email);
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+                alert('Sign up successful. You can now log in.');
+                // Redirect to login page after successful signup
+                window.location.href = 'dep_logon.html'; // Update with actual login page URL
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+    </script>
+
+</body>
+</html>

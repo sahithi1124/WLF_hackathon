@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department News Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background-color: #003366;
+            color: #fff;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .title {
+            font-size: 28px;
+            font-family: 'Arial Black', sans-serif;
+            color: #fff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        section {
+            padding: 50px;
+            text-align: center;
+        }
+        .white-section {
+            background-color: #fff;
+        }
+        .blue-section {
+            background-color: #003366;
+            color: #fff;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .card {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            color: #333;
+        }
+        .blue-section .card {
+            background-color: #fff;
+            color: #003366;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h3 {
+            color: #003366;
+        }
+        .blue-section .card h3 {
+            color: #003366;
+        }
+        footer {
+            background-color: #003366;
+            color: #fff;
+            padding: 20px 10px;
+            text-align: center;
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 8px;
+        }
+
+        .modal-close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .modal-close:hover,
+        .modal-close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <h1 class="title">Department News Hub</h1>
+        </div>
+    </header>
+
+    <!-- Section 1: Upcoming & Ongoing Events (White Background) -->
+    <section class="white-section">
+        <h2>Upcoming & Ongoing Events</h2>
+        <div class="container">
+            <div class="card" onclick="openModal('International Conference on AI', 'February 10-12, 2025', 'GITAM Auditorium')">
+                <h3>International Conference on AI</h3>
+                <p>Date: February 10-12, 2025</p>
+                <p>Location: GITAM Auditorium</p>
+                <p>Details: An international conference discussing advancements in AI.</p>
+            </div>
+            <div class="card" onclick="openModal('Hackathon 2025', 'February 20-22, 2025', 'GITAM Campus')">
+                <h3>Hackathon 2025</h3>
+                <p>Date: February 20-22, 2025</p>
+                <p>Location: GITAM Campus</p>
+                <p>Details: A coding competition to showcase problem-solving skills.</p>
+            </div>
+            <div class="card" onclick="openModal('Sports Meet', 'March 5-7, 2025', 'GITAM Sports Ground')">
+                <h3>Sports Meet</h3>
+                <p>Date: March 5-7, 2025</p>
+                <p>Location: GITAM Sports Ground</p>
+                <p>Details: Annual sports meet with various competitions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Club Activities (Blue Background) -->
+    <section class="blue-section">
+        <h2>Club Activities</h2>
+        <div class="container">
+            <div class="card">
+                <h3>Coding Club</h3>
+                <p>Workshops on AI, web development, and software engineering.</p>
+            </div>
+            <div class="card">
+                <h3>Robotics Club</h3>
+                <p>Innovative projects in robotics and automation.</p>
+            </div>
+            <div class="card">
+                <h3>Music & Arts Club</h3>
+                <p>Events and performances showcasing student talent.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Department Activities (White Background) -->
+    <section class="white-section">
+        <h2>Department Activities</h2>
+        <div class="container">
+            <div class="card">
+                <h3>Engineering & Technology</h3>
+                <p>Civil, CSE, EEE, ECE, Mechanical.</p>
+            </div>
+            <div class="card">
+                <h3>Science</h3>
+                <p>Physics, Chemistry, Mathematics, Life Sciences.</p>
+            </div>
+            <div class="card">
+                <h3>Management</h3>
+                <p>HR, Finance, Marketing, Business Analytics.</p>
+            </div>
+            <div class="card">
+                <h3>Pharmacy</h3>
+                <p>Pharmaceutical Chemistry, Pharmacology, Pharmaceutics.</p>
+            </div>
+            <div class="card">
+                <h3>Law</h3>
+                <p>LLB, LLM, Integrated Law Programs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Registration -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h3>Register for Event</h3>
+            <p id="eventDetails"></p>
+            <form id="registrationForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" required><br><br>
+                <label for="phone">Phone:</label>
+                <input type="text" id="phone" required><br><br>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Gandhi Institute of Technology and Management (GITAM). All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Open modal when event is clicked
+        function openModal(eventName, eventDate, eventLocation) {
+            document.getElementById('eventDetails').textContent = '${eventName} - ${eventDate} at ${eventLocation}';
+            document.getElementById('registrationModal').style.display = "block";
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('registrationModal').style.display = "none";
+        }
+
+        // Handle form submission and store data in localStorage
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const eventDetails = document.getElementById('eventDetails').textContent;
+
+            // Create an object to store the data
+            const registrationData = {
+                name: name,
+                email: email,
+                phone: phone,
+                event: eventDetails
+            };
+
+            // Save to localStorage (for demonstration)
+            let registrations = JSON.parse(localStorage.getItem('registrations')) || [];
+            registrations.push(registrationData);
+            localStorage.setItem('registrations', JSON.stringify(registrations));
+
+            alert("You have successfully registered for the event!");
+
+            closeModal();  // Close modal after successful registration
+        });
+
+        // Close modal if user clicks outside of the modal
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('registrationModal')) {
+                closeModal();
+            }
+        }
+
+        // Retrieve and log stored registrations (for testing purposes)
+        window.onload = function() {
+            const storedRegistrations = JSON.parse(localStorage.getItem('registrations'));
+            if (storedRegistrations) {
+                console.log('Stored Registrations:', storedRegistrations);
+            }
+        };
+    </script>
+</body>
+</html>

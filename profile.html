@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements Overview</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            background-color: #283593;
+            color: #fff;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        header img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            margin-right: 30px;
+            border: 4px solid #fff;
+        }
+
+        .user-details {
+            color: #fff;
+        }
+
+        .user-details h2 {
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: 600;
+        }
+
+        .user-details p {
+            margin: 5px 0;
+            font-size: 16px;
+            font-weight: 400;
+        }
+
+        .certificates-section {
+            background: #f5f6fa;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .certificates-section h3 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .certificates-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        .certificates-list li {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .certificates-list li::before {
+            content: '✔';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 18px;
+            color: #4caf50;
+        }
+
+        .graph-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .graph-box {
+            width: 100%;
+            max-width: 700px;
+            padding: 20px;
+            background: #f5f6fa;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        footer {
+            width: 100%;
+            background-color: #283593;
+            padding: 40px;
+            color: white;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+
+        footer .footer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            align-items: flex-start;
+        }
+
+        footer .footer-section {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+
+        footer h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        footer p {
+            font-size: 16px;
+            margin: 5px 0;
+            color: #ddd;
+        }
+
+        footer .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer .social-links a:hover {
+            color: #91abf9;
+        }
+
+        footer .footer-bottom {
+            text-align: center;
+            margin-top: 15px;
+            border-top: 1px solid #909093;
+            padding-top: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <img src="user3.jpg" alt="Profile Picture">
+        <div class="user-details">
+            <h2>Sagar deshmukh</h2>
+            <p>Email: Sagard@example.com</p>
+            <p>Phone: 123-456-7890</p>
+            <p>Branch: Computer Science</p>
+        </div>
+    </header>
+
+    <!-- Certifications Section -->
+    <div class="certificates-section">
+        <h3>Certifications</h3>
+        <ul class="certificates-list">
+            <li>Certificate in Web Development - XYZ Institute</li>
+            <li>Data Science Bootcamp - ABC Academy</li>
+            <li>Java Programming - Online Course</li>
+            <li>Machine Learning Basics - Coursera</li>
+        </ul>
+    </div>
+
+    <!-- Graphs Section -->
+    <div class="graph-container">
+        <div class="graph-box">
+            <h3>Achievements Graph</h3>
+            <canvas id="achievementsChart"></canvas>
+        </div>
+        <div class="graph-box">
+            <h3>Performance Overview</h3>
+            <canvas id="performanceChart"></canvas>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Section -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>Email: info@gitam.edu</p>
+            <p>Phone: +91 123 456 7890</p>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-links">
+                <a href="#" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
+                <a href="#" class="social-icon"><img src="twitter.png" alt="Twitter"></a>
+                <a href="#" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">&copy; 2025 Gandhi Institute of Technology and Management (GITAM). All Rights Reserved.</div>
+</footer>
+
+<script>
+    const ctx1 = document.getElementById('achievementsChart').getContext('2d');
+    const achievementsChart = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ['Hackathons', 'Certifications', 'Internships', 'Competitions', 'Sports', 'Volunteering'],
+            datasets: [{
+                label: 'Number of Achievements',
+                data: [5, 3, 4, 2, 3, 1],
+                backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    const ctx2 = document.getElementById('performanceChart').getContext('2d');
+    const performanceChart = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Performance Score',
+                data: [70, 75, 80, 85, 90, 95],
+                backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 2,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

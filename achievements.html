@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements Overview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header container */
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+            background-color: #1e2a47;
+            color: #fff;
+        }
+
+        /* Title Styling */
+        .title {
+            font-size: 36px;
+            font-family: 'Arial Black', sans-serif;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Achievements Section */
+        .achievements-section {
+            padding: 70px 20px;
+            background-color: #fff;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievements-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .achievements-header h2 {
+            font-size: 2.5rem;
+            color: #1e2a47;
+            border-bottom: 3px solid #1e2a47;
+            padding-bottom: 10px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .achievements-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .achievement-item {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+            background-color: #f5f9ff;
+        }
+
+        .achievement-item h3 {
+            font-size: 1.6rem;
+            color: #003366;
+            margin-bottom: 15px;
+        }
+
+        .achievement-item ul {
+            list-style-type: none;
+            font-size: 1rem;
+            color: #555;
+            display: none; /* Initially hide the list */
+        }
+
+        .achievement-item li {
+            margin-bottom: 8px;
+        }
+
+        /* Hover effects */
+        .achievement-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .achievement-item .status-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #003366;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        /* Buttons inside achievement items */
+        .achievement-item a, .btn-toggle {
+            background-color: #43639c;
+            color: #fff;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .achievement-item a:hover, .btn-toggle:hover {
+            background-color: #2b314a;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #1e2a47;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer h3 {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            color: #f5f9ff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1 class="title">Achievements Overview</h1>
+</header>
+
+<section class="achievements-section">
+    <div class="achievements-header">
+        <h2>Technical & Professional Achievements</h2>
+        <a href="#" class="btn-toggle" onclick="toggleAchievements('tech')">Show / Hide Details</a>
+    </div>
+    <div id="tech" class="achievements-container" style="display:none;">
+        <div class="achievement-item" onclick="toggleDetails(this)">
+            <h3 class="category-header">Hackathons</h3>
+            <ul>
+                <li>Google Hash Code 2024: Top 10 finalist</li>
+                <li>IEEE Xtreme 2023: Ranked in the top 200 globally</li>
+            </ul>
+            <a href="#" class="btn">View Details</a>
+        </div>
+        <div class="achievement-item" onclick="toggleDetails(this)">
+            <h3 class="category-header">Course Certifications</h3>
+            <ul>
+                <li>AWS Certified Solutions Architect</li>
+                <li>Google Data Analytics Professional Certificate</li>
+                <li>Microsoft Azure Fundamentals</li>
+            </ul>
+            <a href="#" class="btn">View Details</a>
+        </div>
+        <div class="achievement-item" onclick="toggleDetails(this)">
+            <h3 class="category-header">Internships</h3>
+            <ul>
+                <li>Coincent (Aug 2024 - Oct 2024): Data Science with Python</li>
+                <li>Workestech (Nov 2023 - Feb 2024): Analytics & Data Processing</li>
+                <li>Google Summer of Code (2023): Contributed to open-source projects</li>
+            </ul>
+            <a href="#" class="btn">View Details</a>
+        </div>
+        <div class="achievement-item" onclick="toggleDetails(this)">
+            <h3 class="category-header">Technical Competitions</h3>
+            <ul>
+                <li>Ranked 4th in Codeforces Global Contest 2023</li>
+                <li>LeetCode Monthly Challenges: Top 100</li>
+                <li>Kaggle Titanic ML: Ranked in the top 200 participants</li>
+            </ul>
+            <a href="#" class="btn">View Details</a>
+        </div>
+    </div>
+</section>
+
+<section class="achievements-section">
+    <div class="achievements-header">
+        <h2>Extracurricular & Co-Curricular Achievements</h2>
+        <a href="#" class="btn-toggle" onclick="toggleAchievements('extra')">Show / Hide Details</a>
+    </div>
+    <div id="extra" class="achievements-container" style="display:none;">
+        <div class="achievement-item" onclick="toggleDetails(this)">
+            <h3 class="category-header">Sports</h3>
+            <ul>
+                <li>Gold Medal in the 100m Sprint at the 2023 National Athletics Championship</li>
+                <li>Silver Medal in the Long Jump at the 2022 State Athletics Meet</li>
+            </ul>
+            <a href="#" class="btn">View Details</a>
+        </div>
+        <div class="achievement-item" onclick="toggleDetails(this)">
+            <h3 class="category-header">Cultural</h3>
+            <ul>
+                <li>Lead actor in the Drama Club's Annual Play</li>
+                <li>Winner of the 2024 Public Speaking Championship</li>
+            </ul>
+            <a href="#" class="btn">View Details</a>
+        </div>
+        <div class="achievement-item" onclick="toggleDetails(this)">
+            <h3 class="category-header">Leadership</h3>
+            <ul>
+                <li>President of the Debate Club (2023-2024)</li>
+                <li>Captain of the University Football Team (2022-2023)</li>
+            </ul>
+            <a href="#" class="btn">View Details</a>
+        </div>
+        <div class="achievement-item" onclick="toggleDetails(this)">
+            <h3 class="category-header">Volunteering</h3>
+            <ul>
+                <li>Organized local community clean-up drives</li>
+                <li>Volunteered at the local animal shelter for 2 years</li>
+            </ul>
+            <a href="#" class="btn">View Details</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <h3>Contact Details</h3>
+    <p>Email: example@email.com | Phone: 123-456-7890</p>
+    <a href="#">LinkedIn</a> | <a href="#">GitHub</a> | <a href="#">Portfolio</a>
+</footer>
+
+<script>
+    // Function to toggle the visibility of sub-sections
+    function toggleAchievements(id) {
+        const section = document.getElementById(id);
+        section.style.display = section.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // Function to toggle the visibility of the details (list of achievements)
+    function toggleDetails(item) {
+        const ul = item.querySelector('ul');
+        const btn = item.querySelector('a'); // Select the button
+
+        if (ul.style.display === 'none' || ul.style.display === '') {
+            ul.style.display = 'block'; // Show details
+            btn.textContent = 'Close Details'; // Change button text
+        } else {
+            ul.style.display = 'none'; // Hide details
+            btn.textContent = 'View Details'; // Revert button text
+        }
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Department News Hub</title>
+    <style>
+        /* ... (All the CSS from your provided color palette) ... */
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5; /* Light background */
+            color: #333; /* Dark text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #fff; /* White container */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            width: 300px;
+        }
+
+        h2 {
+            color: #003366; /* Dark blue heading */
+            text-align: center;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd; /* Light gray border */
+            border-radius: 5px;
+            background-color: #f9f9f9; /* Very light gray input background */
+            color: #333; /* Dark text in inputs */
+        }
+
+        .button {
+            width: 100%;
+            padding: 10px;
+            background-color: #003366; /* Dark blue button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #002244; /* Slightly darker blue on hover */
+        }
+
+        .signup-link {
+            display: block;
+            text-align: center;
+            color: #666; /* Gray link text */
+            margin-top: 10px;
+        }
+
+        .signup-link a {
+            color: #003366; /* Dark blue link */
+            text-decoration: none;
+        }
+
+        .signup-link a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <h2>Login to Department News Hub</h2>
+        <input type="text" id="username" class="input-field" placeholder="Username" required>
+        <input type="password" id="password" class="input-field" placeholder="Password" required>
+        <button class="button" id="loginBtn">Login</button>
+        <div class="signup-link">
+            Don't have an account? <a href="dep_sign.html" id="signUpBtn">Sign up</a>
+        </div>
+    </div>
+
+    <script>
+        // ... (JavaScript code remains the same) ...
+    </script>
+
+</body>
+</html>

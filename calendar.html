@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Calendar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #003366; /* Dark blue text */
+            line-height: 1.6;
+        }
+
+        /* Container for the calendar */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #003366; /* Dark blue title */
+        }
+
+        /* Month navigation */
+        .month-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: #003366;
+        }
+
+        .month-nav button {
+            background-color: #003366;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .month-nav button:hover {
+            background-color: #1a1a1a; /* Dark hover effect */
+        }
+
+        /* Calendar Grid */
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        .day {
+            background-color: #cce0ff; /* Light blue for the day */
+            color: #003366;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            position: relative;
+            border-radius: 5px;
+        }
+
+        .day:hover {
+            background-color: #b3c6ff; /* Lighter blue on hover */
+            cursor: pointer;
+        }
+
+        .event {
+            background-color: #003366; /* Dark blue for event background */
+            color: #ffffff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        /* Theme Styles */
+        .blue-theme {
+            background-color: #003366;
+            color: #ffffff;
+        }
+
+        .white-theme {
+            background-color: #ffffff;
+            color: #003366;
+        }
+    </style>
+</head>
+<body class="white-theme">
+
+    <div class="container">
+        <h1>Event Calendar</h1>
+
+        <!-- Month navigation -->
+        <div class="month-nav">
+            <button id="prevMonth">Previous</button>
+            <span id="monthName">January 2025</span>
+            <button id="nextMonth">Next</button>
+        </div>
+
+        <div class="calendar" id="calendar">
+            <!-- Calendar will be dynamically generated here -->
+        </div>
+    </div>
+
+    <script>
+        // Initial month and year
+        let currentMonth = 0;  // January (0-11)
+        let currentYear = 2025;
+
+        // Event data for specific dates
+        const events = {
+            "2025-01-15": ["Web Dev Workshop"],
+            "2025-01-21": ["Guest Lecture"],
+            "2025-01-22": ["Modern JavaScript"],
+            "2025-01-30": ["Internship Deadline"]
+        };
+
+        // Function to render calendar for the current month
+        function renderCalendar() {
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const monthNameElement = document.getElementById('monthName');
+            monthNameElement.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+
+            const firstDay = new Date(currentYear, currentMonth, 1);
+            const lastDate = new Date(currentYear, currentMonth + 1, 0);
+            const lastDay = lastDate.getDay();
+            const daysInMonth = lastDate.getDate();
+
+            // Create grid layout
+            const calendarElement = document.getElementById('calendar');
+            calendarElement.innerHTML = ""; // Clear previous calendar
+
+            // Add empty spaces before the first day of the month
+            for (let i = 0; i < firstDay.getDay(); i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.classList.add('day');
+                calendarElement.appendChild(emptyDay);
+            }
+
+            // Add actual days
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.classList.add('day');
+                dayElement.textContent = day;
+
+                // Check if there are events on that day
+                const eventKey = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                if (events[eventKey]) {
+                    const eventList = document.createElement('div');
+                    eventList.classList.add('event');
+                    events[eventKey].forEach(event => {
+                        eventList.textContent = event;
+                        dayElement.appendChild(eventList);
+                    });
+                }
+
+                calendarElement.appendChild(dayElement);
+            }
+
+            // Add empty spaces after the last day of the month
+            for (let i = lastDay; i < 6; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.classList.add('day');
+                calendarElement.appendChild(emptyDay);
+            }
+        }
+
+        // Event listeners for month navigation
+        document.getElementById('prevMonth').addEventListener('click', function () {
+            if (currentMonth === 0) {
+                currentMonth = 11;
+                currentYear--;
+            } else {
+                currentMonth--;
+            }
+            renderCalendar();
+        });
+
+        document.getElementById('nextMonth').addEventListener('click', function () {
+            if (currentMonth === 11) {
+                currentMonth = 0;
+                currentYear++;
+            } else {
+                currentMonth++;
+            }
+            renderCalendar();
+        });
+
+        // Initial rendering of the calendar
+        renderCalendar();
+    </script>
+
+</body>
+</html>

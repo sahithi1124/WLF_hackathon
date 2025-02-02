@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Department News Hub</title>
+  <link rel="stylesheet" href="mystyle.css">
+  <style>
+    body {
+    font-family: Times New Roman, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5; /* Light Grey */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #003366; /* Dark Blue */
+    color: #fff; /* White */
+}
+
+.auth-buttons button {
+    background-color: #fff; /* White */
+    color: #082849; /* Dark Blue */
+    border: 2px solid #354a6a; /* Medium Blue */
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.auth-buttons button:hover {
+    background-color: #171414; /* Dark Grey */
+    color: #fff; /* White */
+}
+
+.welcome-section {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f0f2f5; /* Light Grey */
+}
+
+.main-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #003366; /* Dark Blue */
+}
+
+.about-section {
+    background-color: #f9f9f9; /* Very Light Grey */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 40px auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.about-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #003366; /* Dark Blue */
+    margin-bottom: 30px;
+}
+
+.about-images img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.explore-button-section {
+    margin-top: 20px;
+}
+
+.explore-button {
+    background-color: #0b206b; /* Light Blue */
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.4s ease, transform 0.3s ease;
+}
+
+.explore-button:hover {
+    background-color: #183471; /* Light Blue */
+    transform: scale(1.1);
+}
+
+/* Add responsive styling */
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-text {
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .about-images img {
+        height: 550px;
+    }
+}
+
+.title {
+    color: #e8ecf0; /* Dark Blue */
+}
+/* Contact Section Styles */
+.contact-section {
+  background-color: #003366c5; /* Light green color for Contact Us */
+  padding: 50px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(235, 235, 240, 0.1);
+  margin: 30px auto;
+  max-width: 1200px;
+}
+
+.contact-section h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-animation {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Phone Icon Animation */
+.phone-icon {
+  position: relative;
+  width: 80px;
+  height: 120px;
+  background-color: #333;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-screen {
+  width: 60px;
+  height: 90px;
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+.signal-bar {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #f6fbf6;
+  border-radius: 50%;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.signal-bar:nth-child(3) {
+  top: -10px;
+  left: calc(50% - 4px);
+  animation-delay: 0.2s;
+}
+
+.signal-bar:nth-child(4) {
+  top: -20px;
+  left: calc(50% - 4px);
+  animation-delay: 0.4s;
+}
+
+.signal-bar:nth-child(5) {
+  top: -30px;
+  left: calc(50% - 4px);
+  animation-delay: 0.6s;
+}
+
+ 
+/* Contact Details */
+.contact-details {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.arrow-container {
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.blinking-arrow {
+  font-size: 2rem;
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+#contact-info {
+  display: none;
+  margin-top: 15px;
+  opacity: 0;
+  transform: translateX(50%);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#contact-info.show {
+  display: block;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+footer {
+  background-color: #222327; /* Deep blue color for the footer */
+  color: #ffffff;
+  padding: 20px 10px;
+  text-align: left;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 10px;
+  min-width: 200px;
+}
+
+.footer-section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #91abf9; /* Highlighted gold color */
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section p {
+  line-height: 1.6;
+}
+
+.footer-section a {
+  color: #91abf9;
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 14px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 15px;
+  border-top: 1px solid #909093;
+  padding-top: 10px;
+  font-size: 14px;
+}
+
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.social-icon {
+  margin: 10px 0;
+}
+
+.social-icon img {
+  width: 40px;      /* Set the size of the icons */
+  height: 40px;     /* Ensure the icons are square */
+  border-radius: 8px;  /* Slight rounding of the corners */
+  transition: transform 0.3s;  /* Smooth transition effect when hovered */
+}
+
+.social-icon:hover img {
+  transform: scale(1.1); /* Slightly enlarge the icon on hover */
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+#logo {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+  <div class="logo-container">
+    <!-- Logo -->
+    <div class="animated-logo">
+     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" id="businesswoman">
+        <path fill="#6c6ca6" d="M52.87 32.97a5.608 5.608 0 0 0 5.52 4.63c3.09 0 5.61-2.5 5.61-5.6a5.62 5.62 0 0 0-5.61-5.61c-2.76 0-5.06 2.01-5.52 4.65h-5.64V11.06h5.64c.46 2.63 2.76 4.64 5.52 4.64 3.09 0 5.61-2.52 5.61-5.61s-2.52-5.61-5.61-5.61c-2.76 0-5.06 2.01-5.52 4.64h-6.61c-.54 0-.97.43-.97.97v20.95h-5.28a.97.97 0 0 0 0 1.94h5.28v20.94c0 .53.43.97.97.97h6.61c.46 2.63 2.76 4.64 5.52 4.64A5.62 5.62 0 0 0 64 53.92c0-3.1-2.52-5.61-5.61-5.61-2.76 0-5.06 2.01-5.52 4.64h-5.64V32.97h5.64zm5.52-4.64c2.02 0 3.67 1.65 3.67 3.67 0 2.03-1.65 3.67-3.67 3.67s-3.67-1.64-3.67-3.67c0-2.02 1.65-3.67 3.67-3.67zm0-21.92c2.02 0 3.67 1.65 3.67 3.67s-1.65 3.67-3.67 3.67-3.67-1.65-3.67-3.67 1.65-3.67 3.67-3.67zm0 43.83c2.02 0 3.67 1.64 3.67 3.67 0 2.02-1.65 3.67-3.67 3.67s-3.67-1.65-3.67-3.67c0-2.03 1.65-3.67 3.67-3.67z"></path>
+        <circle cx="58.39" cy="53.92" r="3.67" fill="#54bf9f"></circle>
+        <circle cx="58.39" cy="10.09" r="3.67" fill="#cbeafb"></circle>
+        <circle cx="58.39" cy="32" r="3.67" fill="#aeb1d5"></circle>
+        <path fill="#3da57f" d="M58.39 50.25c-2.02 0-3.67 1.64-3.67 3.67 0 2.02 1.65 3.67 3.67 3.67s3.67-1.65 3.67-3.67c0-2.03-1.65-3.67-3.67-3.67zm0 6.17a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"></path>
+        <path fill="#bbe1f4" d="M58.39 6.42c-2.02 0-3.67 1.65-3.67 3.67s1.65 3.67 3.67 3.67 3.67-1.65 3.67-3.67-1.65-3.67-3.67-3.67zm0 6.17a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"></path>
+        <path fill="#959fc9" d="M58.39 28.33c-2.02 0-3.67 1.65-3.67 3.67 0 2.03 1.65 3.67 3.67 3.67s3.67-1.64 3.67-3.67c0-2.02-1.65-3.67-3.67-3.67zm0 6.17a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"></path>
+        <path fill="#6c6ca6" d="M35.73 40.94c-1.3-1.6-3.37-2.75-6.15-3.46l2.13-.83a3.236 3.236 0 0 0 1.89-4.02l-1.57-4.67c-.24-1.59-.64-4.36-.73-5.83-.03-.27-.06-.64-.12-1.08V21c-.39-2.76-1.79-7.75-6.81-10.25-.04-.01-.08-.03-.11-.04 0 0 0-.01-.01-.01-1.62-.78-3.5-1.26-5.6-1.39h-.12C7.52 9.99 6.06 19.32 5.87 22.19c-.01.14-.02.29-.04.46l-.02.27c-.15 1.41-.43 3.41-.65 4.87l-1.58 4.84c-.53 1.63.3 3.39 1.89 4.02l2.13.83c-2.79.7-4.86 1.85-6.17 3.46-1.51 1.87-1.45 3.72-1.42 4.14v12.56c0 1.03.85 1.88 1.88 1.88h33.38c1.04 0 1.88-.85 1.88-1.88V45.08c.04-.41.1-2.27-1.42-4.14zm-5.61-12.61c.01.04.03.06.04.09v.08l1.6 4.74c.21.65-.12 1.35-.75 1.6l-5.14 2.02c-.28-.03-.55-.06-.84-.09-.13 0-.27.02-.39.07-.23-.5-.42-1.2-.53-2.02 2.82-1.94 4.7-5.32 4.7-9.17 0-1.16-.17-2.28-.5-3.36.34-.02.69-.04 1.05-.08v.07c.1 1.47.47 4.11.76 6.05zm-11.52 6.3c-4.55 0-8.26-4.02-8.26-8.97 0-.83.11-1.65.31-2.43 2.43-.66 5.64-1.84 8.48-3.89 1.05.97 3.35 2.61 7.12 2.93.4 1.07.62 2.21.62 3.39 0 4.94-3.71 8.97-8.27 8.97zm4.56 3.54c-3.09 2.8-6.06 2.8-9.16 0 .38-.6.67-1.39.86-2.37 1.16.49 2.42.77 3.74.77 1.31 0 2.56-.27 3.71-.76.19.97.48 1.77.85 2.36zm1.26-25.15c3.01 1.93 4.2 5.06 4.67 7.28-4.59.46-7.28-1.2-8.43-2.19 1.52-1.36 2.85-3.05 3.76-5.09zm-5.83-1.76c1.52.1 2.88.41 4.1.89-3.01 6.85-11.68 9.1-14.85 9.71.31-3.29 2.01-10.04 10.75-10.6zM6.18 34.85c-.64-.25-.97-.95-.76-1.61l1.6-4.91c.01-.03.01-.05.01-.08.01-.03.03-.05.03-.08.19-1.24.43-2.9.59-4.29.26-.04.56-.09.91-.16-.1.63-.16 1.28-.16 1.94 0 3.83 1.86 7.2 4.66 9.14-.12.85-.3 1.55-.54 2.05-.12-.05-.25-.07-.39-.07-.28.02-.54.06-.81.09l-5.14-2.02zm-4.23 22.8v-12.6c0-.04 0-.09-.01-.12 0-.06-.14-1.39 1.04-2.81 1.07-1.29 3.47-2.9 8.83-3.36.49.51.99.96 1.49 1.36l4.06 17.47-15.41.06zm13.68-16.09c1.96.87 3.95.87 5.91 0l-2.96 12.71-2.95-12.71zm4.17 16.02 4.07-17.47c.49-.4.99-.85 1.48-1.36 5.37.46 7.77 2.07 8.84 3.36 1.17 1.42 1.04 2.75 1.03 2.8 0 .04-.01.08-.01.13l.06 12.54H19.8z"></path>
+        <path fill="#4fbee6" d="M35.27 57.58H19.8l4.07-17.47c.49-.4.99-.85 1.48-1.36 5.37.46 7.77 2.07 8.84 3.36 1.17 1.42 1.04 2.75 1.03 2.8 0 .04-.01.08-.01.13l.06 12.54z"></path>
+        <path fill="#38a9da" d="M1.95 57.65v-12.6c0-.04 0-.09-.01-.12 0-.06-.14-1.39 1.04-2.81 1.07-1.29 3.47-2.9 8.83-3.36.49.51.99.96 1.49 1.36l4.06 17.47-15.41.06z"></path>
+        <path fill="#cbeafb" d="m21.54 41.56-2.96 12.71-2.95-12.71c1.96.86 3.95.86 5.91 0z"></path>
+        <path fill="#fee6ab" d="M23.16 38.17c-3.09 2.8-6.06 2.8-9.16 0 .38-.6.67-1.39.86-2.37 1.16.49 2.42.77 3.74.77 1.31 0 2.56-.27 3.71-.76.19.97.48 1.77.85 2.36zm3.71-12.51c0 4.95-3.71 8.97-8.27 8.97-4.55 0-8.26-4.02-8.26-8.97 0-.83.11-1.65.31-2.43 2.43-.66 5.64-1.84 8.48-3.89 1.05.97 3.35 2.61 7.12 2.93.4 1.06.62 2.21.62 3.39z"></path>
+        <path fill="#f59393" d="M22.69 12.15c-3.01 6.85-11.68 9.1-14.85 9.71.31-3.3 2.01-10.04 10.75-10.61 1.52.1 2.88.41 4.1.9zm6.4 8.15c-4.59.46-7.28-1.2-8.43-2.19 1.52-1.36 2.85-3.04 3.76-5.09 3.01 1.92 4.2 5.06 4.67 7.28zm1.92 14.55-5.14 2.02c-.28-.03-.55-.06-.84-.09-.13 0-.27.02-.39.07-.23-.5-.42-1.2-.53-2.02 2.82-1.94 4.7-5.32 4.7-9.17 0-1.16-.17-2.28-.5-3.36.34-.02.69-.04 1.05-.08v.07c.1 1.46.47 4.1.76 6.05.01.04.03.06.04.09v.08l1.6 4.74c.21.65-.12 1.35-.75 1.6z"></path>
+        <path fill="#e57f80" d="M13.06 34.79c-.12.85-.3 1.55-.54 2.05-.12-.05-.25-.07-.39-.07-.28.02-.54.06-.81.09l-5.14-2.02c-.64-.25-.97-.95-.76-1.61l1.6-4.91c.01-.03.01-.05.01-.08.01-.03.03-.05.03-.08.19-1.24.43-2.9.59-4.29.26-.04.56-.09.91-.16-.1.64-.16 1.29-.16 1.95 0 3.83 1.86 7.19 4.66 9.13z"></path>
+        <path fill="#bbe1f4" d="M18.61 42.21v11.93l-.03.13-2.95-12.71c.99.44 1.99.66 2.98.65z"></path>
+        <path fill="#cbeafb" d="m21.54 41.56-2.93 12.58V42.21c.98 0 1.96-.21 2.93-.65z"></path>
+        <path fill="#f1d39a" d="M18.61 36.57v3.7c-1.52.01-3.05-.69-4.61-2.1.38-.6.67-1.39.86-2.37 1.16.49 2.42.77 3.74.77h.01z"></path>
+        <path fill="#fee6ab" d="M23.16 38.17c-1.53 1.39-3.04 2.09-4.55 2.1v-3.7c1.31 0 2.55-.27 3.7-.76.19.98.48 1.77.85 2.36z"></path>
+        <path fill="#f1d39a" d="M18.61 19.69v14.94h-.01c-4.55 0-8.26-4.02-8.26-8.97 0-.83.11-1.65.31-2.43 2.28-.62 5.26-1.7 7.96-3.54z"></path>
+        <path fill="#fee6ab" d="M26.87 25.66c0 4.95-3.7 8.96-8.26 8.97V19.69c.18-.11.35-.23.52-.35 1.05.97 3.35 2.61 7.12 2.93.4 1.07.62 2.21.62 3.39z"></path>
+        <path fill="#e57f80" d="M18.61 11.26v6.01c-3.76 2.97-8.58 4.18-10.77 4.6.31-3.3 2.01-10.04 10.75-10.61h.02z"></path>
+        <path fill="#f59393" d="M22.69 12.15c-.93 2.12-2.4 3.8-4.08 5.12v-6.01c1.51.1 2.87.41 4.08.89z"></path>
+
+      
+         
+        
+      </svg>
+    </div>
+    <!-- Title -->
+    <h1 class="title">Department News Hub</h1>
+  </div>
+  <div class="auth-buttons">
+    <button onclick="window.location.href='dep_logon.html'" class="login-btn">Login</button>
+    <button onclick="window.location.href='dep_sign.html'"class="signup-btn">Sign Up</button>
+  </div>
+</header>
+
+  <section class="welcome-section">
+    <h2 class="main-heading">Discover Our Vibrant Community</h2>
+    <p class="caption">Stay updated about our campus</p>
+    <div class="navbar">
+      <!-- Button-style Navigation Links with redirection -->
+      <button class="nav-button" onclick="window.location.href='home.html'">Home</button>
+      <button class="nav-button" onclick="window.location.href='events.html'">Events</button>
+      <button class="nav-button" onclick="window.location.href='depevents.html'">Achievements</button>
+      <button class="nav-button" onclick="window.location.href='calendar.html'">Calendar</button>
+    </div>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIX8-2t7lOUjO8iv2cX2n8jKKTmeuz0m8vfg&s" alt="Campus Image" class="campus-image">
+  </section>
+
+  <section class="about-section">
+    <h2 class="about-heading">ABOUT US</h2>
+    <div class="about-container">
+      <div class="about-images">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7xGnDK4NfNEU3VQCwKVYa2_up3hBdqwGkUg&s" alt="Campus Achievements" class="about-image">
+        <img src="https://as1.ftcdn.net/jpg/01/98/27/28/1000_F_198272873_zAgZSFoW8mSCbOmXRndsQN0r9bx0hM9X.jpg" alt="Campus Achievements" class="about-image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6pnCTkZ17IJC-ZJk5fzlIdRfKXEBzvVYWQw&s" alt="Campus Achievements" class="about-image">
+      </div>
+      
+      <div class="about-text">
+        <p>GITAM University, located in the scenic city of Visakhapatnam, is known for its rich academic history, innovative teaching, and vibrant student life. Over the years, the university has built a strong foundation in education, research, and cultural activities. Our alumni have made remarkable strides in various fields, contributing to global growth.</p>
+        <h3>Our Memorable Achievements</h3>
+        <ul>
+          <li>First place in National Science Fair 2023</li>
+          <li>Successful launch of our Research and Development Lab</li>
+          <li>Organized the largest cultural festival in the region</li>
+          <li>Awarded 'Best Campus for Innovation' in 2022</li>
+        </ul>
+        <h3>Alumni Network</h3>
+        <p>Our alumni network is an integral part of the GITAM community. With thousands of successful professionals across the globe, our alumni continue to make their mark in industries like technology, business, and research. They play an important role in mentoring current students and fostering a spirit of collaboration across generations.</p>
+        <h3>Sessions and Workshops</h3>
+        <p>At GITAM, we regularly host interactive sessions, workshops, and seminars for students to engage with industry experts and thought leaders. These sessions help our students to stay updated with the latest trends and advancements in their respective fields, while also offering them networking opportunities with professionals and alumni.</p>
+        <h3>Student Clubs</h3>
+        <p>Our campus is home to a variety of student clubs and societies that promote creativity, leadership, and collaboration. These clubs include tech clubs, cultural societies, sports teams, and entrepreneurship forums. They provide students with opportunities to explore their passions and contribute to the community.</p>
+      </div>
+    </div>
+  </section>
+  <section class="contact-section">
+        <h2>Contact Us</h2>
+        <div class="contact-container">
+          <div class="contact-animation">
+            <div class="phone-icon">
+              <div class="phone-body"></div>
+              <div class="phone-screen"></div>
+              <div class="signal-bar"></div>
+              <div class="signal-bar"></div>
+              <div class="signal-bar"></div>
+            </div>
+          </div>
+      
+          <!-- Contact Details -->
+          <div class="contact-details">
+            <div class="arrow-container" onclick="toggleDetails()">
+              <span id="arrow" class="blinking-arrow">⬅ </span> <button>Click me!</button>
+            </div>
+            <div id="contact-info" class="logo-list">
+              <p>Campus: GITAM University, Vizag</p>
+              <p>Phone: +91 1234567890</p>
+              <p>Email: contact@gitam.edu</p>
+              <div class="social-links">
+                <a href="https://instagram.com" target="_blank" class="social-icon">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                </a>
+                <a href="https://github.com" target="_blank" class="social-icon">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <div class="footer-container">
+          <div class="footer-section branches">
+            <h3>Our Branches</h3>
+            <ul>
+              <li>Hyderabad Campus: +91-123-456-7890</li>
+              <li>Bengaluru Campus: +91-987-654-3210</li>
+              <li>Vizag Campus: +91-456-789-1230</li>
+            </ul>
+          </div>
+          <div class="footer-section alumni">
+            <h3>Alumni Network</h3>
+            <p>Join our strong alumni network to connect with peers and share your success stories. <a href="#">Learn More</a></p>
+            <p>Email us at: <a href="mailto:alumni@gitam.edu">alumni@gitam.edu</a></p>
+          </div>
+          <div class="footer-section contact">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:info@gitam.edu">info@gitam.edu</a></p>
+            <p>Phone: +91-123-456-7890</p>
+            <div class="social-icons">
+              <a href="https://instagram.com/" target="_blank">Instagram</a>
+              <a href="https://github.com/" target="_blank">GitHub</a>
+              <a href="https://linkedin.com/" target="_blank">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 GITAM University. All rights reserved.</p>
+        </div>
+      </footer>
+      
+  
+  <script>
+   function toggleDetails() {
+  const contactInfo = document.getElementById('contact-info');
+  const arrow = document.getElementById('arrow');
+  
+  // Toggle the visibility of contact details
+  contactInfo.classList.toggle('show');
+  
+  // Change the arrow direction
+  if (contactInfo.classList.contains('show')) {
+    arrow.textContent = '⬇'; 
+  } else {
+    arrow.textContent = '⬅'; 
+  }
+}
+// Get the sidebar and logo
+const sidebar = document.getElementById('sidebar');
+const logo = document.getElementById('logo');
+const closeBtn = document.getElementById('closeBtn');
+
+// Open the sidebar when clicking the logo
+logo.onclick = function() {
+  sidebar.style.width = '250px';
+}
+
+// Close the sidebar
+closeBtn.onclick = function() {
+  sidebar.style.width = '0';
+}
+
+
+  </script>
+</body>
+</html>
